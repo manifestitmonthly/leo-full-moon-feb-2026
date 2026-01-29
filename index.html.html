@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo Full Moon Questions Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #764ba2;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .section p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        select:hover {
+            border-color: #667eea;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.1);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+            display: none;
+        }
+        
+        .result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .result h3 {
+            color: #764ba2;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+        
+        .result p {
+            color: #333;
+            font-size: 1.05em;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        
+        .leo-house-container {
+            margin-top: 15px;
+        }
+        
+        .note {
+            background: #fff3cd;
+            padding: 12px;
+            border-radius: 8px;
+            color: #856404;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌕 Leo Full Moon Questions</h1>
+        <p class="subtitle">February 1, 2026 • Discover Your Personal Questions</p>
+        
+        <!-- Sun Sign Section -->
+        <div class="section">
+            <h2>☀️ Your Sun Sign</h2>
+            <p>What question should you ask based on where the Sun is positioned?</p>
+            <label for="sunSign">Select your Sun sign:</label>
+            <select id="sunSign">
+                <option value="">-- Choose your sign --</option>
+                <option value="Aries">Aries</option>
+                <option value="Taurus">Taurus</option>
+                <option value="Gemini">Gemini</option>
+                <option value="Cancer">Cancer</option>
+                <option value="Leo">Leo</option>
+                <option value="Virgo">Virgo</option>
+                <option value="Libra">Libra</option>
+                <option value="Scorpio">Scorpio</option>
+                <option value="Sagittarius">Sagittarius</option>
+                <option value="Capricorn">Capricorn</option>
+                <option value="Aquarius">Aquarius</option>
+                <option value="Pisces">Pisces</option>
+            </select>
+            <div id="sunSignResult" class="result">
+                <h3>Your Sun Sign Question:</h3>
+                <p id="sunSignQuestion"></p>
+            </div>
+        </div>
+        
+        <!-- Sun House Section -->
+        <div class="section">
+            <h2>☀️ Your Sun House Location</h2>
+            <p>Which house does your Sun fall in your chart?</p>
+            <label for="sunHouse">Select the house where your Sun is located:</label>
+            <select id="sunHouse">
+                <option value="">-- Choose a house --</option>
+                <option value="1st House">1st House</option>
+                <option value="2nd House">2nd House</option>
+                <option value="3rd House">3rd House</option>
+                <option value="4th House">4th House</option>
+                <option value="5th House">5th House</option>
+                <option value="6th House">6th House</option>
+                <option value="7th House">7th House</option>
+                <option value="8th House">8th House</option>
+                <option value="9th House">9th House</option>
+                <option value="10th House">10th House</option>
+                <option value="11th House">11th House</option>
+                <option value="12th House">12th House</option>
+            </select>
+            <div id="sunHouseResult" class="result">
+                <h3>Your Sun House Question:</h3>
+                <p id="sunHouseQuestion"></p>
+            </div>
+        </div>
+        
+        <!-- Leo House Section -->
+        <div class="section">
+            <h2>🦁 Your Leo House Location(s)</h2>
+            <p>Which house(s) does Leo fall in your chart? You can select up to 2 houses if Leo spans multiple houses.</p>
+            <label for="leoHouse1">Leo House #1:</label>
+            <select id="leoHouse1">
+                <option value="">-- Choose a house --</option>
+                <option value="1st House">1st House</option>
+                <option value="2nd House">2nd House</option>
+                <option value="3rd House">3rd House</option>
+                <option value="4th House">4th House</option>
+                <option value="5th House">5th House</option>
+                <option value="6th House">6th House</option>
+                <option value="7th House">7th House</option>
+                <option value="8th House">8th House</option>
+                <option value="9th House">9th House</option>
+                <option value="10th House">10th House</option>
+                <option value="11th House">11th House</option>
+                <option value="12th House">12th House</option>
+            </select>
+            
+            <div class="leo-house-container">
+                <label for="leoHouse2">Leo House #2 (optional):</label>
+                <select id="leoHouse2">
+                    <option value="">-- Choose a house (optional) --</option>
+                    <option value="1st House">1st House</option>
+                    <option value="2nd House">2nd House</option>
+                    <option value="3rd House">3rd House</option>
+                    <option value="4th House">4th House</option>
+                    <option value="5th House">5th House</option>
+                    <option value="6th House">6th House</option>
+                    <option value="7th House">7th House</option>
+                    <option value="8th House">8th House</option>
+                    <option value="9th House">9th House</option>
+                    <option value="10th House">10th House</option>
+                    <option value="11th House">11th House</option>
+                    <option value="12th House">12th House</option>
+                </select>
+            </div>
+            
+            <div id="leoHouse1Result" class="result">
+                <h3>Your Leo House Question (#1):</h3>
+                <p id="leoHouse1Question"></p>
+            </div>
+            
+            <div id="leoHouse2Result" class="result">
+                <h3>Your Leo House Question (#2):</h3>
+                <p id="leoHouse2Question"></p>
+            </div>
+        </div>
+        
+        <div class="note">
+            💡 <strong>Tip:</strong> Write down your questions and reflect on them during the full moon on February 1, 2026. These questions will guide your release ritual.
+        </div>
+    </div>
+
+    <script>
+        // Data for all questions
+        const sunSignQuestions = {
+            "Aries": "Am I charging ahead alone, or can I slow down and consider the collective?",
+            "Taurus": "Am I clinging to comfort and stability, or can I embrace change for progress?",
+            "Gemini": "Am I staying surface-level and detached, or can I commit deeply to a cause?",
+            "Cancer": "Am I letting emotions cloud my vision, or can I balance feelings with innovation?",
+            "Leo": "Am I seeking personal glory, or can I share the spotlight with the group?",
+            "Virgo": "Am I perfecting details while missing the bigger picture, or can I see both?",
+            "Libra": "Am I people-pleasing to keep peace, or can I stand for what's truly progressive?",
+            "Scorpio": "Am I holding on too tightly to control, or can I trust the collective process?",
+            "Sagittarius": "Am I preaching my truth, or can I listen to diverse perspectives?",
+            "Capricorn": "Am I prioritizing tradition and status, or can I break rules for innovation?",
+            "Aquarius": "Am I so focused on humanity that I've forgotten my own heart and needs?",
+            "Pisces": "Am I dissolving into others' needs, or can I maintain boundaries while serving?"
+        };
+
+        const sunHouseQuestions = {
+            "1st House": "Am I leading with logic over heart, or can I balance both my mind and emotions?",
+            "2nd House": "Am I valuing community contribution over personal creative joy, or can I honor both?",
+            "3rd House": "Am I communicating ideas over feelings, or can I speak from both head and heart?",
+            "4th House": "Am I prioritizing the collective over my family's emotional needs, or can I serve both?",
+            "5th House": "Am I detaching from romance and creativity for the 'greater good,' or can I embrace personal joy?",
+            "6th House": "Am I serving others at the expense of creative self-expression, or can I do both?",
+            "7th House": "Am I maintaining distance in relationships to stay independent, or can I be close and free?",
+            "8th House": "Am I intellectualizing intimacy instead of feeling it, or can I be vulnerable and autonomous?",
+            "9th House": "Am I pursuing ideals over personal passion, or can I follow both truth and heart?",
+            "10th House": "Am I building a career for humanity but ignoring personal recognition, or can I have both?",
+            "11th House": "Am I losing myself in the group, or can I be part of the collective while staying special?",
+            "12th House": "Am I hiding my individuality in service to all, or can I serve while still shining?"
+        };
+
+        const leoHouseQuestions = {
+            "1st House": "Am I showing up as my authentic self, or the version I think others want to see?",
+            "2nd House": "Do I value my unique talents, or am I hiding them to feel financially/emotionally safe?",
+            "3rd House": "Am I speaking my truth boldly, or dimming my voice to keep the peace?",
+            "4th House": "Can I shine at home and with family, or do I only perform for the outside world?",
+            "5th House": "Am I creating/expressing/loving authentically, or performing for validation?",
+            "6th House": "Am I recognized for my work and service, or invisible in my daily routine?",
+            "7th House": "Do my relationships celebrate the real me, or do I perform to be loved?",
+            "8th House": "Can I be vulnerable and visible in my intimate connections, or do I hide my light?",
+            "9th House": "Am I sharing my beliefs and wisdom boldly, or playing it safe to fit in?",
+            "10th House": "Is my public image authentic, or am I performing a role for success?",
+            "11th House": "Do my friendships and community see the real me, or a version that fits in?",
+            "12th House": "Am I hiding my light in the shadows, or ready to let my authentic self emerge?"
+        };
+
+        // Event listeners
+        document.getElementById('sunSign').addEventListener('change', function() {
+            const selected = this.value;
+            const resultDiv = document.getElementById('sunSignResult');
+            const questionP = document.getElementById('sunSignQuestion');
+            
+            if (selected && sunSignQuestions[selected]) {
+                questionP.textContent = sunSignQuestions[selected];
+                resultDiv.classList.add('show');
+            } else {
+                resultDiv.classList.remove('show');
+            }
+        });
+
+        document.getElementById('sunHouse').addEventListener('change', function() {
+            const selected = this.value;
+            const resultDiv = document.getElementById('sunHouseResult');
+            const questionP = document.getElementById('sunHouseQuestion');
+            
+            if (selected && sunHouseQuestions[selected]) {
+                questionP.textContent = sunHouseQuestions[selected];
+                resultDiv.classList.add('show');
+            } else {
+                resultDiv.classList.remove('show');
+            }
+        });
+
+        document.getElementById('leoHouse1').addEventListener('change', function() {
+            const selected = this.value;
+            const resultDiv = document.getElementById('leoHouse1Result');
+            const questionP = document.getElementById('leoHouse1Question');
+            
+            if (selected && leoHouseQuestions[selected]) {
+                questionP.textContent = leoHouseQuestions[selected];
+                resultDiv.classList.add('show');
+            } else {
+                resultDiv.classList.remove('show');
+            }
+        });
+
+        document.getElementById('leoHouse2').addEventListener('change', function() {
+            const selected = this.value;
+            const resultDiv = document.getElementById('leoHouse2Result');
+            const questionP = document.getElementById('leoHouse2Question');
+            
+            if (selected && leoHouseQuestions[selected]) {
+                questionP.textContent = leoHouseQuestions[selected];
+                resultDiv.classList.add('show');
+            } else {
+                resultDiv.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
